@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Manager;
 
-namespace Game.Manager
+namespace Legacy
 {
     public abstract class ActiveSceneManager<T> : Manager<T>
     {

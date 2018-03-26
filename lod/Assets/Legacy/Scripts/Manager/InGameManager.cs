@@ -2,17 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.StateMachine;
 
 namespace Game.Manager
 {
-    public enum InGameState
-    {
-        NULL    = 0,    // Always start from NULL
-        LOADING = 1,
-        PLAYING = 2,
-        PAUSING = 3,    // Only be able to save when under PAUSE state
-        ENDING  = 4
-    }
+
     public class InGameManager : Manager<InGameManager>
     {
         #region Fields
@@ -21,13 +15,13 @@ namespace Game.Manager
         /// Backing field of InGameState
         /// </summary>
         [SerializeField]
-        private InGameState _InGameState = InGameState.NULL;
+        private InGameStateMachine.InGameState _InGameState = InGameStateMachine.NULL;
 
         #endregion Fields
 
         #region Properties
 
-        public InGameState InGameState
+        public InGameStateMachine.InGameState InGameState
         {
             get
             {
@@ -49,19 +43,15 @@ namespace Game.Manager
         /// <summary>
         /// OnInGameStateChange
         /// </summary>
-        private void OnInGameStateChange(InGameState newValue)
+        private void OnInGameStateChange(InGameStateMachine.InGameState newValue)
         {
             // Check InGameState machine: https://cacoo.com/diagrams/51VtjGisyx8bEBSt
-            if (this._InGameState == InGameState.NULL && newValue == InGameState.LOADING
-                || (this._InGameState == InGameState.LOADING && newValue == InGameState.PLAYING)
-                || (this._InGameState == InGameState.PLAYING && (newValue == InGameState.PAUSING || newValue == InGameState.ENDING))
-                || (this._InGameState == InGameState.PAUSING && newValue == InGameState.PLAYING)
-                || (this._InGameState == InGameState.ENDING && newValue == InGameState.NULL))
+            if (newValue.PreviousStates.Contains(this.InGameState))
             {
                 return;
             }
             else
-                throw new System.ArgumentException(string.Format("{0} to {1} doest not meet the InGameState machine.", this._InGameState, newValue));
+                throw new System.ArgumentException(string.Format("{0} to {1} doest not meet the InGameState machine.", this._InGameState.Name, newValue.Name));
         }
 
         #endregion InGameManager

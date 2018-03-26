@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Manager;
+using Game.StateMachine;
 
 namespace Test
 {
@@ -18,15 +19,15 @@ namespace Test
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
-                InGameManager.Instance.InGameState = InGameState.LOADING;
+                InGameManager.Instance.InGameState = InGameStateMachine.LOADING;
             else if (Input.GetKeyDown(KeyCode.Alpha2))
-                InGameManager.Instance.InGameState = InGameState.PLAYING;
+                InGameManager.Instance.InGameState = InGameStateMachine.PLAYING;
             else if (Input.GetKeyDown(KeyCode.Alpha3))
-                InGameManager.Instance.InGameState = InGameState.PAUSING;
+                InGameManager.Instance.InGameState = InGameStateMachine.PAUSING;
             else if (Input.GetKeyDown(KeyCode.Alpha4))
-                InGameManager.Instance.InGameState = InGameState.ENDING;
+                InGameManager.Instance.InGameState = InGameStateMachine.ENDING;
             else if (Input.GetKeyDown(KeyCode.Alpha0))
-                InGameManager.Instance.InGameState = InGameState.NULL;
+                InGameManager.Instance.InGameState = InGameStateMachine.NULL;
         }
     }
 }
