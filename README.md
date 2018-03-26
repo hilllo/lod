@@ -1,7 +1,7 @@
 # Lord of Dominion
 Welcome! The project is currently under construction...
 
-For details, go to the [LoD Wiki](https://github.com/hilllo/lod/wiki).
+For details, go to the [Lord of Dominion Rulebook](https://docs.google.com/document/d/1JB1UluWWGzT4l6cV9s7oQzuhDALIJOzwWLKCGkbXmOo/edit?usp=sharing).
 
 *Read more: [‘Lord of Dominion’ Postmortem: A practise of game design](http://hilllo.com/lord-of-dominion-postmortem/)*
 
